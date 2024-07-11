@@ -1,7 +1,9 @@
 # PoC setup steps:
 
 ## run postgres container
-docker run -p 5432:5432 --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+docker run -p 5432:5432 --name some-postgres -e POSTGRES_PASSWORD=<password placeholder> -d postgres
+
+(remember the password, you'll need to provide it in .env file)
 
 ## create mock data with psql
 
@@ -25,3 +27,14 @@ python -m venv new-env
 source new-env/bin/activate  # On Windows use `new-env\Scripts\activate`
 
 ## install dependencies
+launch from project's root the following command:
+
+pip install -r requirements.txt
+
+create .env file in the project root and fill it with:
+OPENAI_API_KEY=
+DB_NAME=jobboard
+DB_USER=postgres
+DB_PASSWORD=(password you used to run docker container)
+DB_HOST=localhost
+DB_PORT=5432
